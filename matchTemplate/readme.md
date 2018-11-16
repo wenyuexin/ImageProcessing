@@ -5,6 +5,7 @@
 2 matching
 
 int matching(const Mat &image, const Mat &templ, double CompressionRatio, Point &matchLoc) 
+
 功能：基于二次匹配方法的模板匹配函数
 输入：image 待匹配的图像
      templ 用于匹配的模板
