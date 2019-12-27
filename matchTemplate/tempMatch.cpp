@@ -1,4 +1,7 @@
-﻿/**
+﻿using cv::Point;
+ using cv::Mat;
+ 
+ /**
  * 功能：模板匹配函数
  * 输入：
  *   1）image 待匹配的图像
@@ -11,12 +14,12 @@
  */
 Point tempMatch(Mat &image, Mat &templ, int method)
 {
-	Mat matchResult; //存放匹配结果
+	cv::Mat matchResult; //存放匹配结果
 	cv::matchTemplate(image, templ, matchResult, method);
 
 	//获取最佳匹配点
 	double minValue; double maxValue; 
-	Point minLocation; Point maxLocation;
+	cv::Point minLocation; cv::Point maxLocation;
 	cv::minMaxLoc(matchResult, &minValue, &maxValue, &minLocation, &maxLocation, Mat());
 	
 	//返回最佳匹配点
