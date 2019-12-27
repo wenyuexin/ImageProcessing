@@ -1,4 +1,8 @@
-﻿/**
+﻿using cv::Mat;
+ using cv::Point;
+ using cv::Rect;
+ 
+ /**
  * 功能：基于二次匹配方法的模板匹配函数
  * 输入：image 待匹配的图像
  *       templ 用于匹配的模板
@@ -52,9 +56,11 @@ int matching(const Mat &image, const Mat &templ, double CompressionRatio, Point 
 		roiRect = Rect(roiLoc, roiSize) & rect_image;
 		imgROI = image(roiRect); //截取样本ROI区域
 	}
-	else 
+	else
+	{
 		imgROI = image; //不压缩
-
+	}
+	
 	/*二次匹配*/
 	cv::matchTemplate(imgROI, templ, imgResult, TM_CCOEFF_NORMED); //图像匹配
 	cv::minMaxLoc(imgResult, &minValue, &maxValue, &minLoc, &maxLoc, Mat());
